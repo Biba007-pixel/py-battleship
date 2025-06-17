@@ -43,17 +43,23 @@ class Ship:
 
 
 class Battleship:
-    def __init__(self, ships: list | tuple | int) -> None:
+    def __init__(
+            self,
+            ships: list[tuple[tuple[int, int], tuple[int, int]]]
+    ) -> None:
         self.field = {}
         self._place_ships(ships)
 
-    def _place_ships(self, ships: list | tuple | int) -> None:
+    def _place_ships(
+            self,
+            ships: list[tuple[tuple[int, int], tuple[int, int]]]
+    ) -> None:
         for start, end in ships:
             ship = Ship(start, end)
             for deck in ship.decks:
                 self.field[(deck.row, deck.column)] = ship
 
-    def fire(self, location: tuple | int) -> str:
+    def fire(self, location: tuple[int, int]) -> str:
         if location in self.field:
             ship = self.field[location]
             hit = ship.fire(location[0], location[1])
