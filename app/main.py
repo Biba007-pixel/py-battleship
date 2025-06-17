@@ -9,12 +9,12 @@ class Deck:
 
 
 class Ship:
-    def __init__(self, start: int, end: int) -> None:
+    def __init__(self, start: tuple | int, end: tuple | int) -> None:
         self.decks: list = []
         self.is_drowned: bool = False
         self.create_decks(start, end)
 
-    def create_decks(self, start: int | tuple, end: int | tuple) -> None:
+    def create_decks(self, start: tuple | int, end: tuple | int) -> None:
         if start[0] == end[0]:
             for col in range(start[1], end[1] + 1):
                 self.decks.append(Deck(start[0], col))
